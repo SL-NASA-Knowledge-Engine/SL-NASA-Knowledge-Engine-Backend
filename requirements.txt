@@ -13,3 +13,6 @@ openai
 # Web scrapping
 bs4
 pandas
+
+# Neo4j driver for connecting to a Neo4j database
+neo4j
