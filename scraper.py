@@ -12,7 +12,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 # 1. Load the CSV with titles and links
 try:
-    df = pd.read_csv("SB_publication_PMC.csv").head(10) # TODO: Change to full dataset after testing
+    df = pd.read_csv("SB_publication_PMC.csv")
     logging.info(f"CSV successfully loaded. Found {len(df)} publications.")
 except FileNotFoundError:
     logging.error("Error: 'SB_publication_PMC.csv' file not found. Please ensure it is in the same folder as the script.")
@@ -58,7 +58,6 @@ def scrape_article(url):
                     authors.append(name)
 
         data["authors"] = authors
-        logging.info(f"Authors found (deduped): {authors}")
 
         # TODO: Journal?
 
