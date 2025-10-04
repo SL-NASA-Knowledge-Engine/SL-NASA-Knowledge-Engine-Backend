@@ -13,3 +13,4 @@ openai
 # Web scrapping
 bs4
 pandas
+networkx
