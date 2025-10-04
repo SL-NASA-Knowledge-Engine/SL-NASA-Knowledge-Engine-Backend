@@ -21,22 +21,33 @@ def get_open_triplets_from_text(openai_service: OpenAIMessageService, text_chunk
     if not openai_service or not text_chunk.strip():
         return []
 
-    system_prompt = "Eres un experto en biociencia y tu tarea es extraer conocimiento estructurado de textos científicos. Tu objetivo es identificar las afirmaciones factuales más importantes en forma de tripletas (entidad1, relación, entidad2)."
+    system_prompt = (
+    "Eres un experto en biociencias especializado en extracción de conocimiento estructurado "
+    "a partir de textos científicos. Tu tarea consiste en identificar las afirmaciones factuales "
+    "más relevantes expresadas como tripletas (entidad1, relación, entidad2)."
+)
+
     user_prompt = f"""
     **Instrucciones:**
-    1. Analiza el siguiente texto científico.
-    2. 'entidad1' y 'entidad2' deben ser conceptos científicos clave (genes, proteínas, organismos, condiciones, resultados, etc.).
-    3. La 'relación' debe ser la frase verbal corta y precisa que conecta las dos entidades en el texto.
-    4. Devuelve el resultado como una lista de diccionarios JSON con las claves "source", "relation" y "target".
-    5. Sé conciso y extrae solo las relaciones más significativas. Si no encuentras ninguna relación clara, devuelve una lista vacía [].
+    1. Analiza el siguiente texto científico cuidadosamente.
+    2. Identifica las afirmaciones factuales y representa cada una como una tripleta.
+    3. Las claves deben ser:
+    - **"source"**: la primera entidad (entidad1).
+    - **"relation"**: la relación o verbo que conecta las entidades.
+    - **"target"**: la segunda entidad (entidad2).
+    4. Tanto 'source' como 'target' deben ser conceptos científicos clave, tales como artículos, condiciones experimentales, resultados, autores, nombres de experimentos y hallazgos.
+    5. La 'relation' debe ser una frase verbal breve, clara y precisa que describa la conexión entre las entidades.
+    6. Devuelve el resultado como una **lista de diccionarios JSON** con las claves "source", "relation" y "target".
+    7. Sé conciso y extrae únicamente las relaciones más relevantes. Si no encuentras ninguna relación clara, devuelve una lista vacía `[]`.
 
     **Texto a analizar:**
     ---
     {text_chunk}
     ---
-    **Resultado en formato JSON:**
+
+    **Resultado esperado (formato JSON):**
     """
-    
+
     try:
         response_text = openai_service.generate_message(system_prompt, user_prompt)
         match = re.search(r'\[.*\]', response_text, re.DOTALL)
