@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 import logging
 import json
 import argparse
+from urllib.parse import urljoin
 
 # Basic configuration for logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -88,6 +89,23 @@ def scrape_article(url):
         data["sections"] = sections
 
         # References
+        references = []
+        # Try to find reference list sections (common pattern: section id starts with 'ref-list')
+        ref_sections = soup.select("section[id^=ref-list], section[id*='ref-list']")
+        if ref_sections:
+            for ref_sec in ref_sections:
+                for li in ref_sec.select("li"):
+                    cite = li.find("cite")
+                    title_text = cite.get_text(" ", strip=True) if cite else None
+                    first_a = li.find("a", href=True)
+                    link = None
+                    if first_a:
+                        href = first_a.get("href")
+                        link = urljoin(response.url, href)
+                    if title_text or link:
+                        references.append({"title": title_text, "link": link})
+
+        data["references"] = references
 
         return data
 
