@@ -1,0 +1,15 @@
+# Framework
+fastapi[all]
+uvicorn[standard]
+
+# Configuración y Modelos
+pydantic
+pydantic-settings
+python-dotenv
+
+# Lógica de Negocio y Servicios
+openai
+
+# Web scrapping
+bs4
+pandas
