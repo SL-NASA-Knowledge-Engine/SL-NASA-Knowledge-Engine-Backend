@@ -60,9 +60,42 @@ def scrape_article(url):
         data["authors"] = authors
         logging.info(f"Authors found (deduped): {authors}")
 
-        # Journal
+        # TODO: Journal?
 
-        # Publication Date
+        # Publication Date (from article notes / history)
+        pub_date = None
+        article_history_node = soup.select_one("section.history, #historyarticle-meta1, div.notes section.history, div.article-notes, div#anp_a")
+        if article_history_node:
+            history_text = article_history_node.get_text(" ", strip=True)
+
+            # Helper to extract the value after a label up to a semicolon or line break
+            def _extract_label(label):
+                m = re.search(rf"{label}\s*[:\-]?\s*([^;\n]+)", history_text, re.I)
+                return m.group(1).strip() if m else None
+
+            received = _extract_label('Received')
+            accepted = _extract_label('Accepted')
+            collection = _extract_label('Collection date')
+
+            # Save structured article history
+            data["article_history"] = {
+                "raw": history_text,
+                "received_date": received,
+                "accepted_date": accepted,
+                "collection_date": collection,
+            }
+
+            # Prioritize accepted > collection > received for publication_date
+            if accepted:
+                pub_date = accepted
+            elif collection:
+                pub_date = collection
+            elif received:
+                pub_date = received
+        else:
+            data["article_history"] = None
+
+        data["publication_date"] = pub_date
 
         # Abstract
         abstract = soup.select_one("section.abstract")
@@ -90,8 +123,9 @@ def scrape_article(url):
 
         # References
         references = []
-        # Try to find reference list sections (common pattern: section id starts with 'ref-list')
-        ref_sections = soup.select("section[id^=ref-list], section[id*='ref-list']")
+        ref_sections = soup.select(
+            "section[id^=ref-list], section[id*='ref-list'], section.ref-list, section[class*='ref-list'], ul.ref-list"
+        )
         if ref_sections:
             for ref_sec in ref_sections:
                 for li in ref_sec.select("li"):
