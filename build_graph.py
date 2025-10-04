@@ -7,11 +7,13 @@ import logging
 from tqdm import tqdm
 from collections import Counter
 
-# Importamos tu clase de servicio
 from infrastructure.openai_service import OpenAIMessageService
 
+# Importamos tu clase de servicio
+
+
 # --- CONFIGURACIÓN ---
-INPUT_JSON_FILE = 'nasa_documents.json'
+INPUT_JSON_FILE = 'resources/space_biology_scraped.json'
 OUTPUT_TRIPLETS_FILE = 'raw_triplets_azure.json'
 OUTPUT_GRAPH_FILE = 'nasa_bioscience_graph_azure.gml'
 TOP_RELATIONS_FILE = 'top_relations_azure.txt'
