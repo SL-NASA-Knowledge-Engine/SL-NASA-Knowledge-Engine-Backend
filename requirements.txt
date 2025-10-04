@@ -9,6 +9,7 @@ python-dotenv
 
 # Lógica de Negocio y Servicios
 openai
+requests
 
 # Web scrapping
 bs4
