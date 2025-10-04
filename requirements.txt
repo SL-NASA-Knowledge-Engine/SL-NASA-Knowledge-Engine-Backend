@@ -16,3 +16,5 @@ pandas
 
 # Neo4j driver for connecting to a Neo4j database
 neo4j
+
+networkx
