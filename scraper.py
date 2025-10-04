@@ -1,3 +1,4 @@
+import re
 import requests
 import pandas as pd
 from bs4 import BeautifulSoup
@@ -63,12 +64,28 @@ def scrape_article(url):
         # Publication Date
 
         # Abstract
+        abstract = soup.select_one("section.abstract")
+        if abstract:
+            paras = [p.get_text(" ", strip=True) for p in abstract.find_all("p")]
+            data["abstract"] = "\n".join(paras)
 
         # Sections
+        sections = {}
+        for sec in soup.select("section[id^=s], section[id^=S]"):
+            header = sec.find(["h2"])
+            if header:
+                sec_title = header.get_text(strip=True).lower()
+                sec_title = re.sub(r'^[\d\.\)\s]+', '', sec_title)
+                content = " ".join(p.get_text(" ", strip=True) for p in sec.find_all("p"))
+                sections[sec_title] = content
 
-        # Go through each of the sections and extract text
+        # Acknowledgments
+        acknowledgments = soup.select_one("section#ack1")
+        if acknowledgments:
+            paras = [p.get_text(" ", strip=True) for p in acknowledgments.find_all("p")]
+            sections["acknowledgments"] = "\n".join(paras)
 
-
+        data["sections"] = sections
 
         # References
 
