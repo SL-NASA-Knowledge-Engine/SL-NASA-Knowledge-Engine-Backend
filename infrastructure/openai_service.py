@@ -1,13 +1,5 @@
 # infrastructure/openai_service.py
 import logging
-import os
-import sys
-
-# This allows the script to be run directly for testing by adding the project root to the Python path.
-if __name__ == "__main__":
-    project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    sys.path.insert(0, project_root)
-
 from openai import AzureOpenAI, RateLimitError
 from core.settings import settings
 
@@ -19,18 +11,24 @@ class OpenAIMessageService:
             api_key=settings.OPENAI_API_KEY,
         )
 
-    def generate_message(self, system_prompt: str, user_prompt: str) -> str:
+    def generate_message(self, system_prompt: str, user_prompt: str, json_mode: bool = False) -> str:
         try:
-            logging.info(f"Requesting message to OpenAI")
-            response = self.client.chat.completions.create(
-                model=settings.OPENAI_API_DEPLOYMENT_NAME,
-                messages=[
+            logging.info(f"Requesting message to OpenAI (JSON mode: {json_mode})")
+            
+            request_params = {
+                "model": settings.OPENAI_API_DEPLOYMENT_NAME,
+                "messages": [
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_prompt},
                 ],
-                max_tokens=1024,
-                temperature=0.2,
-            )
+                "max_tokens": 2048,
+                "temperature": 0.2,
+            }
+            
+            if json_mode:
+                request_params["response_format"] = {"type": "json_object"}
+
+            response = self.client.chat.completions.create(**request_params)
             return response.choices[0].message.content.strip()
 
         except RateLimitError:
@@ -39,21 +37,3 @@ class OpenAIMessageService:
         except Exception as e:
             logging.error(f"Error al generar el mensaje de OpenAI: {str(e)}")
             raise ConnectionError("Error al generar el mensaje de OpenAI.")
-
-
-if __name__ == "__main__":
-    # This block will only execute when the script is run directly
-    # It's useful for testing the OpenAIMessageService
-    logging.basicConfig(level=logging.INFO)
-    print("Running OpenAIMessageService directly for testing...")
-
-    try:
-        service = OpenAIMessageService()
-        system_prompt = "You are a helpful assistant."
-        user_prompt = "Hello! Can you tell me a fun fact about space?"
-        message = service.generate_message(system_prompt, user_prompt)
-        print("\n--- OpenAI Response ---")
-        print(message)
-        print("-----------------------\n")
-    except Exception as e:
-        print(f"An error occurred during testing: {e}")
