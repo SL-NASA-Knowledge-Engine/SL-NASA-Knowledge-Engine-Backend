@@ -1,12 +1,14 @@
-# main.py
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 import logging
-import sys
+import socket
+import time
+from urllib.parse import urlparse
 
 from core.logging_config import LogLevels, configure_logging
 from api.router import router
-from infraestructure.neo4j_service import Neo4jService
+from infrastructure.neo4j_service import Neo4jService
+from core.settings import settings
 
 
 configure_logging(LogLevels.info)
@@ -14,25 +16,52 @@ configure_logging(LogLevels.info)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    """Lifespan context manager: crea el servicio de Neo4j al arrancar y lo cierra al apagar."""
+    """Lifespan context manager: create Neo4j driver at startup and close at shutdown.
+
+    Performs a short TCP check with retries to fail fast if the host is unreachable,
+    then initializes the driver (which also verifies connectivity).
+    """
+
+    def _tcp_check(uri: str, timeout: float = 3.0) -> bool:
+        try:
+            parsed = urlparse(uri)
+            host = parsed.hostname
+            port = parsed.port or 7687
+            if not host:
+                return False
+            with socket.create_connection((host, port), timeout=timeout):
+                return True
+        except Exception:
+            return False
+
+    # quick reachability check with a few retries
+    retries = 3
+    delay_seconds = 2
+    reachable = False
+    for attempt in range(1, retries + 1):
+        if _tcp_check(settings.NEO4J_URI, timeout=3.0):
+            reachable = True
+            break
+        logging.warning("Attempt %s/%s: Neo4j host not reachable yet, retrying in %ss...", attempt, retries, delay_seconds)
+        time.sleep(delay_seconds)
+
+    if not reachable:
+        logging.error("Neo4j host %s not reachable after %s attempts", settings.NEO4J_URI, retries)
+        raise RuntimeError(f"Neo4j host {settings.NEO4J_URI} not reachable")
+
     neo = None
     try:
-        # setup
         neo = Neo4jService()
         app.state.neo4j = neo
         logging.info("Neo4jService initialized")
 
-        # gives the control to the server while the app is running
         yield
 
-    except Exception as e:
-        # If the startup fails (for example, if it cannot connect to Neo4j),
-        # we re-raise the exception to prevent the app from starting.
-        logging.exception(f"Error during application startup or runtime: {e}")
+    except Exception:
+        logging.exception("Error during application startup or runtime")
         raise
 
     finally:
-        # teardown: we ensure the driver is closed if it was created
         if neo is not None:
             try:
                 neo.close()
