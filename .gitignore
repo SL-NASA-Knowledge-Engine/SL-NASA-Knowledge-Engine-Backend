@@ -87,3 +87,4 @@ __pypackages__/
 .vscode/tasks.json
 
 __pycache__
+*.pyc
