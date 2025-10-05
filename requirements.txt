@@ -19,3 +19,4 @@ pandas
 
 # Base de datos de Grafo
 neo4j
+networkx
