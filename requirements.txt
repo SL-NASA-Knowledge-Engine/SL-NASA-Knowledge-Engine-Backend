@@ -1,0 +1,21 @@
+# requirements.txt
+# Framework
+fastapi
+uvicorn[standard]
+
+# Configuración y Modelos
+pydantic
+pydantic-settings
+python-dotenv
+
+# Lógica de Negocio y Servicios
+openai
+requests
+tqdm
+
+# Web scrapping
+beautifulsoup4
+pandas
+
+# Base de datos de Grafo
+neo4j
