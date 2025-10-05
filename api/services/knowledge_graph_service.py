@@ -2,6 +2,7 @@
 import json
 import logging
 import os
+import re
 from infrastructure.openai_service import OpenAIMessageService
 from infrastructure.neo4j_service import Neo4jService
 
@@ -24,24 +25,38 @@ class KnowledgeGraphService:
 
     def search_context(self, query_text: str) -> list:
         """Busca en el grafo para encontrar contexto relevante para la pregunta."""
-        query_words = [word.strip().title() for word in query_text.split() if len(word) > 4]
+        # Extract meaningful keywords (words of length >=4), lowercased and unique
+        keywords = list(dict.fromkeys([w.lower() for w in re.findall(r"\w{4,}", query_text)]))
 
         cypher_query = """
         UNWIND $keywords AS keyword
         MATCH (n:Entity)
-        WHERE n.name CONTAINS keyword
-        MATCH (n)-[r]-(m)
-        RETURN n.name AS entity1, type(r) AS relation, m.name AS entity2, r.source_doc AS pmc_id
-        LIMIT 15
+        WHERE toLower(n.name) CONTAINS keyword
+        OPTIONAL MATCH (n)-[r]->(m)
+        RETURN n.name AS entity1, type(r) AS relation, m.name AS entity2, collect(DISTINCT r.source_doc) AS pmc_ids
+        LIMIT 50
         """
         try:
-            results = self.neo4j.execute_query(cypher_query, parameters={'keywords': query_words})
-            
+            results = self.neo4j.execute_query(cypher_query, parameters={'keywords': keywords})
+
             context = []
             for record in results:
+                entity1 = record.get('entity1')
+                relation = record.get('relation') or 'RELATED_TO'
+                entity2 = record.get('entity2')
+                pmc_ids = record.get('pmc_ids') or []
+                # normalize pmc_ids to a list of non-empty strings
+                if isinstance(pmc_ids, str):
+                    pmc_ids = [pmc_ids]
+                pmc_ids = [p for p in pmc_ids if p]
+
+                # make relation readable: RESULTED_IN -> resulted in
+                readable_rel = relation.replace('_', ' ').lower()
+
+                summary = f"{entity1} {readable_rel} {entity2}" if entity2 else f"{entity1} ({readable_rel})"
                 context.append({
-                    "content": f"El concepto '{record['entity1']}' tiene una relación de tipo '{record['relation']}' con '{record['entity2']}'.",
-                    "pmc_id": record['pmc_id']
+                    "content": summary,
+                    "pmc_ids": pmc_ids
                 })
             return context
         except Exception as e:
@@ -55,41 +70,47 @@ class KnowledgeGraphService:
         if not context:
             return "No encontré información relevante en la base de conocimiento para responder a tu pregunta."
 
-        context_str = ""
-        hyperlinks_str = ""
-        unique_pmc_ids = sorted(list({item['pmc_id'] for item in context}))
-
+        # Build a readable context block and collect unique pmc ids
+        context_lines = []
+        unique_pmc_ids = set()
         for item in context:
-            context_str += f"[ID: {item['pmc_id']}] {item['content']}\n"
-        
-        for pmc_id in unique_pmc_ids:
+            pmcs = item.get('pmc_ids') or []
+            pmc_tags = ",".join(pmcs) if pmcs else "Unknown"
+            context_lines.append(f"[IDs: {pmc_tags}] {item['content']}")
+            for p in pmcs:
+                unique_pmc_ids.add(p)
+
+        context_str = "\n".join(context_lines)
+
+        hyperlinks_str = ""
+        for pmc_id in sorted(unique_pmc_ids):
             url = self.reference_map.get(pmc_id, "URL no encontrada")
             hyperlinks_str += f"{pmc_id}: {url}\n"
 
         system_prompt = """
-        Eres un asistente experto en biociencia espacial de la NASA. Tu tarea es responder la pregunta del usuario basándote únicamente en el contexto proporcionado.
-        **Instrucciones Cruciales:**
-        1. Sintetiza la información del contexto para dar una respuesta clara y concisa.
-        2. Al final de CADA afirmación, DEBES añadir una cita en formato `[ID]`. Usa el `pmc_id` del contexto.
-        3. NO inventes información. Si el contexto no es suficiente para responder, indícalo.
-        4. Al final de toda tu respuesta, crea una sección llamada '## Referencias'. En esta sección, lista cada `pmc_id` que citaste con su hipervínculo correspondiente.
+        Eres un asistente experto en biociencia espacial de la NASA. Responde la pregunta del usuario usando SOLO el contexto proporcionado.
+        Reglas:
+        - No inventes información.
+        - Cada afirmación concreta debe llevar al final una referencia entre corchetes con el PMC id, por ejemplo: "La microgravedad induce pérdida ósea [PMC3630201]".
+        - Si una afirmación está respaldada por múltiples artículos, incluye todos los PMC ids en la cita: [PMC1, PMC2].
+        - Al final de la respuesta incluye una sección "## Referencias" con cada PMC utilizado y su URL correspondiente.
         """
-        
+
         user_prompt = f"""
-        **Contexto Proporcionado:**
+        Contexto extraído del grafo (usa solamente esto para responder):
         ---
         {context_str}
         ---
 
-        **Hipervínculos para las Referencias:**
+        Referencias (PMC -> URL):
         ---
         {hyperlinks_str}
         ---
 
-        **Pregunta del usuario:**
+        Pregunta del usuario:
         {query}
 
-        **Respuesta:**
+        Responde de forma concisa, con citas en formato [PMC...] al final de cada afirmación.
         """
         
         return self.openai.generate_message(system_prompt, user_prompt)
