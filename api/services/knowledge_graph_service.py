@@ -121,7 +121,7 @@ class KnowledgeGraphService:
         """
         cypher_query = """
         MATCH (n:Entity)
-        WHERE n.type = 'Topic'
+        WHERE n.type = 'Entity'
         WITH n, COUNT { (n)--() } as degree
         ORDER BY degree DESC
         LIMIT $limit
