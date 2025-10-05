@@ -84,7 +84,10 @@ class KnowledgeGraphService:
 
         hyperlinks_str = ""
         for pmc_id in sorted(unique_pmc_ids):
-            url = self.reference_map.get(pmc_id, "URL no encontrada")
+            # Prefer the source_url from the original scraped data; if missing, construct the canonical PMC URL
+            url = self.reference_map.get(pmc_id)
+            if not url:
+                url = f"https://pmc.ncbi.nlm.nih.gov/articles/{pmc_id}"
             hyperlinks_str += f"{pmc_id}: {url}\n"
 
         system_prompt = """
@@ -94,6 +97,9 @@ class KnowledgeGraphService:
         - Cada afirmación concreta debe llevar al final una referencia entre corchetes con el PMC id, por ejemplo: "La microgravedad induce pérdida ósea [PMC3630201]".
         - Si una afirmación está respaldada por múltiples artículos, incluye todos los PMC ids en la cita: [PMC1, PMC2].
         - Al final de la respuesta incluye una sección "## Referencias" con cada PMC utilizado y su URL correspondiente.
+            - Si la URL no está disponible en los metadatos provistos, constrúyela a partir del PMC id usando el siguiente patrón:
+              https://pmc.ncbi.nlm.nih.gov/articles/{pmc_id}
+              y utilízala en la sección de referencias.
         """
 
         user_prompt = f"""
@@ -133,3 +139,6 @@ class KnowledgeGraphService:
         except Exception as e:
             logging.error(f"Error al obtener las entidades de Neo4j: {e}")
             return []
+
+
+
