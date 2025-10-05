@@ -51,7 +51,7 @@ def get_open_triplets_from_text(openai_service: OpenAIMessageService, text_chunk
     - Tienden a realizar búsquedas iterativas, refinando los términos para obtener precisión.
     - Usan palabras clave como *response*, *expression*, *gene regulation*, *stress*, *adaptation*, *yield*, *morphology*, *nutritional content*, *risk mitigation*, *hardware*, *life support system*, *resource efficiency*, entre otros.
 
-    **Texto a analizar:**
+    **Texto a analizar: **
     ---
     {text_chunk}
     ---
