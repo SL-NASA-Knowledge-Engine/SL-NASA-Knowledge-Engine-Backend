@@ -22,8 +22,9 @@ class Neo4jUploader:
 
     def upload_triplet(self, triplet: dict, relation_mapping: dict):
         """Sube una única tripleta al grafo, refinando la relación."""
-        source = str(triplet.get('source', '')).strip().title()
-        target = str(triplet.get('target', '')).strip().title()
+        # Preserve original casing; trimming only
+        source = str(triplet.get('source', '')).strip()
+        target = str(triplet.get('target', '')).strip()
         raw_relation = str(triplet.get('relation', '')).strip().lower()
         source_doc = triplet.get('source_doc', 'Unknown')
 
@@ -35,9 +36,10 @@ class Neo4jUploader:
         
         # Consulta Cypher que usa MERGE para evitar duplicados de nodos y relaciones
         # Se crea una relación por cada documento fuente para preservar la trazabilidad
+        # Add a pipeline-specific label (SL_PIPELINE) so we can safely wipe only nodes created by this pipeline
         query = (
-            "MERGE (s:Entity {name: $source_name}) "
-            "MERGE (t:Entity {name: $target_name}) "
+            "MERGE (s:Entity:SL_PIPELINE {name: $source_name}) "
+            "MERGE (t:Entity:SL_PIPELINE {name: $target_name}) "
             "MERGE (s)-[r:`" + canonical_relation + "` {source_doc: $doc}]->(t)"
         )
         
@@ -63,30 +65,65 @@ def load_relation_mapping(mapping_file: str) -> dict:
         logging.error(f"Error al cargar o procesar el archivo de mapeo '{mapping_file}': {e}")
         return None
 
+def wipe_database(neo_service: Neo4jService, mode: str = 'pipeline'):
+    """Wipe data from the database.
+
+    mode: 'pipeline' deletes only nodes with :SL_PIPELINE label.
+          'all' drops all nodes (requires caution).
+    """
+    if mode == 'pipeline':
+        logging.info("Eliminando nodos creados por el pipeline (:SL_PIPELINE) ...")
+        try:
+            neo_service.execute_query("MATCH (n:SL_PIPELINE) DETACH DELETE n")
+            logging.info("Borrado de nodos con :SL_PIPELINE completado.")
+        except Exception as e:
+            logging.error(f"Error al borrar nodos de pipeline: {e}")
+            raise
+    elif mode == 'all':
+        logging.info("ELIMINANDO TODA LA BASE DE DATOS (MATCH (n) DETACH DELETE n) ...")
+        try:
+            neo_service.execute_query("MATCH (n) DETACH DELETE n")
+            logging.info("Borrado completo de la base de datos finalizado.")
+        except Exception as e:
+            logging.error(f"Error al borrar toda la base de datos: {e}")
+            raise
+    else:
+        logging.error(f"Modo de borrado desconocido: {mode}")
+        raise ValueError("Modo de borrado desconocido")
+
 def main():
     """Función principal para cargar los datos en Neo4j."""
     logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
     
-    relation_mapping = load_relation_mapping(RELATION_MAP_FILE)
-    if relation_mapping is None:
-        return
-
-    try:
-        with open(INPUT_TRIPLETS_FILE, 'r', encoding='utf-8') as f:
-            all_triplets = json.load(f)
-    except Exception as e:
-        logging.error(f"Error al cargar el archivo de tripletas '{INPUT_TRIPLETS_FILE}': {e}")
-        return
-        
+    # Initialize Neo4j early (we'll wipe the entire DB unconditionally before uploading)
     neo_service = None
     try:
         neo_service = Neo4jService()
+    except Exception as e:
+        logging.error(f"No se pudo inicializar Neo4jService: {e}")
+        return
+
+    try:
+        # Wipe the entire database (user requested automatic full wipe on every run)
+        logging.info("Wiping entire Neo4j database before upload (MATCH (n) DETACH DELETE n)")
+        wipe_database(neo_service, mode='all')
+
+        relation_mapping = load_relation_mapping(RELATION_MAP_FILE)
+        if relation_mapping is None:
+            return
+
+        try:
+            with open(INPUT_TRIPLETS_FILE, 'r', encoding='utf-8') as f:
+                all_triplets = json.load(f)
+        except Exception as e:
+            logging.error(f"Error al cargar el archivo de tripletas '{INPUT_TRIPLETS_FILE}': {e}")
+            return
+
         uploader = Neo4jUploader(neo_service)
-        
         logging.info(f"Subiendo {len(all_triplets)} tripletas a Neo4j...")
         for triplet in tqdm(all_triplets, desc="Cargando en Neo4j"):
             uploader.upload_triplet(triplet, relation_mapping)
-            
+
     except Exception as e:
         logging.error(f"Error durante el proceso de carga a Neo4j: {e}")
     finally:

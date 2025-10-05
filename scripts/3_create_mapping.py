@@ -27,43 +27,83 @@ def generate_mapping_with_ai(openai_service: OpenAIMessageService, relations_tex
     system_prompt = """
     Eres un experto en modelado de datos y ontologías para grafos de conocimiento.
     Tu tarea es analizar una lista de frases de relaciones extraídas de textos científicos y agruparlas en categorías semánticas consistentes.
+    IMPORTANTE: Devuelve SOLO un único objeto JSON válido (sin explicaciones adicionales ni texto fuera del JSON).
     """
 
     user_prompt = f"""
-    **Instrucciones:**
-    1.  Analiza la siguiente lista de relaciones y sus frecuencias.
-    2.  Agrupa las relaciones que tengan un significado similar.
-    3.  Para cada grupo, crea una etiqueta canónica (un nombre para la categoría). Esta etiqueta debe ser corta, descriptiva, en mayúsculas y en inglés (ej. CAUSES, AFFECTS, USES_METHOD).
-    4.  El resultado final debe ser un único objeto JSON. Las claves del JSON deben ser las etiquetas canónicas que creaste, y el valor para cada clave debe ser una lista de las relaciones originales que pertenecen a ese grupo.
+        Instrucciones:
+        1) Analiza la siguiente lista de relaciones (puede incluir conteos) y agrupa relaciones semánticamente equivalentes.
+        2) Crea una etiqueta canónica corta para cada grupo. Requisitos de la etiqueta canónica:
+                 - En inglés, mayúsculas, palabras separadas por guión bajo si es necesario (ej: RESULTED_IN, CAUSES, USES_METHOD).
+                 - Debe ser concisa y orientada a consultas (no frases largas).
+        3) Devuelve UN ÚNICO objeto JSON. Las claves deben ser las etiquetas canónicas y los valores listas de relaciones originales que pertenecen a ese grupo.
+        4) Si alguna relación de entrada no encaja en ningún grupo, inclúyela bajo la clave especial "UNMAPPED" como una lista.
+        5) No añadas explicaciones, comentarios o texto fuera del JSON. SOLO el JSON.
 
-    **Ejemplo de formato de salida:**
-    {{
-      "CAUSES": ["causes", "induces", "leads to", "resulted in"],
-      "USES_METHOD": ["was measured using", "measures", "was conducted on"],
-      "IS_ASSOCIATED_WITH": ["is associated with", "related to"]
-    }}
+        Ejemplo de formato de salida esperado:
+        {{
+            "CAUSES": ["causes", "induces", "leads to", "resulted in"],
+            "USES_METHOD": ["was measured using", "measures", "was conducted on"],
+            "UNMAPPED": ["some odd phrase"]
+        }}
 
-    **Lista de relaciones a analizar:**
-    ---
-    {relations_text}
-    ---
+        Lista de relaciones a analizar (entrada):
+        ---
+        {relations_text}
+        ---
 
-    **Resultado en formato JSON:**
-    """
+        Resultado (SOLO JSON):
+        """
 
     try:
         # Pide al servicio de IA que genere la respuesta en modo JSON si es posible
         response_text = openai_service.generate_message(system_prompt, user_prompt, json_mode=True)
-        
+
         # Extraer el bloque JSON de la respuesta del modelo
         match = re.search(r'\{.*\}', response_text, re.DOTALL)
-        if match:
-            json_str = match.group(0)
-            mapping = json.loads(json_str)
-            return mapping
-        else:
-            logging.error("No se pudo encontrar un objeto JSON en la respuesta del modelo.")
+        if not match:
+            logging.error("No se pudo encontrar un objeto JSON en la respuesta del modelo. Respuesta (recorte): %s", response_text[:400])
             return {}
+
+        json_str = match.group(0)
+        try:
+            mapping = json.loads(json_str)
+        except Exception as e:
+            logging.error(f"No se pudo parsear el JSON devuelto por la IA: {e}")
+            return {}
+
+        # Post-procesado: normalizar claves a mayúsculas con guión bajo y limpiar las relaciones listadas
+        cleaned = {}
+        for key, vals in mapping.items():
+            # Ensure key is a string
+            if not isinstance(key, str):
+                continue
+            # Normalize canonical key to uppercase and underscores
+            canon = key.strip().upper().replace(' ', '_')
+            # Expect vals to be a list; if not, try to coerce
+            if isinstance(vals, str):
+                vals_list = [vals]
+            elif isinstance(vals, list):
+                vals_list = vals
+            else:
+                # skip unexpected formats
+                continue
+            cleaned_vals = []
+            for v in vals_list:
+                if not isinstance(v, str):
+                    continue
+                # remove trailing counts like ": 12" if present, strip
+                v_clean = re.sub(r":\s*\d+$", '', v).strip()
+                if v_clean:
+                    cleaned_vals.append(v_clean)
+            if cleaned_vals:
+                cleaned[canon] = sorted(list(dict.fromkeys(cleaned_vals)))
+
+        # Ensure there's always an UNMAPPED key (possibly empty)
+        if 'UNMAPPED' not in cleaned:
+            cleaned['UNMAPPED'] = []
+
+        return cleaned
     except Exception as e:
         logging.error(f"Error al generar o procesar el mapeo con IA: {e}")
         return {}
