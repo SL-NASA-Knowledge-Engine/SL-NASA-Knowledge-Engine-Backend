@@ -117,10 +117,11 @@ class KnowledgeGraphService:
 
     def get_top_categories(self, limit: int = 10) -> list:
         """
-        Obtiene las N entidades más frecuentes (con más relaciones) del grafo.
+        Obtiene los N 'Topics' más frecuentes (con más relaciones) del grafo.
         """
         cypher_query = """
         MATCH (n:Entity)
+        WHERE n.type = 'Topic'
         WITH n, COUNT { (n)--() } as degree
         ORDER BY degree DESC
         LIMIT $limit
