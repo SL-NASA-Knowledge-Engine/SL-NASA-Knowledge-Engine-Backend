@@ -88,3 +88,6 @@ __pypackages__/
 
 __pycache__
 *.pyc
+
+# Extra
+space_biology_scraped.json

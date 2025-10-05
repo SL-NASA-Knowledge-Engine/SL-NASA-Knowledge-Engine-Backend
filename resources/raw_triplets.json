@@ -1,0 +1,1058 @@
+[
+  {
+    "source": "Mice in Bion-M 1 Space Mission: Training and Selection",
+    "relation": "COVERS",
+    "target": "microgravity",
+    "source_doc": "PMC4136787"
+  },
+  {
+    "source": "Mice in Bion-M 1 Space Mission: Training and Selection",
+    "relation": "DESCRIBES",
+    "target": "mice training/selection program",
+    "source_doc": "PMC4136787"
+  },
+  {
+    "source": "mice training/selection program",
+    "relation": "RESULTED_IN",
+    "target": "effective training program",
+    "source_doc": "PMC4136787"
+  },
+  {
+    "source": "Mice in Bion-M 1 Space Mission: Training and Selection",
+    "relation": "COVERS",
+    "target": "microgravity",
+    "source_doc": "PMC4136787"
+  },
+  {
+    "source": "Mice in Bion-M 1 Space Mission: Training and Selection",
+    "relation": "DESCRIBES",
+    "target": "social housing of mice",
+    "source_doc": "PMC4136787"
+  },
+  {
+    "source": "social housing of mice",
+    "relation": "RESULTED_IN",
+    "target": "formation of stable groups",
+    "source_doc": "PMC4136787"
+  },
+  {
+    "source": "Mice in Bion-M 1 Space Mission: Training and Selection",
+    "relation": "DESCRIBES",
+    "target": "paste food diet",
+    "source_doc": "PMC4136787"
+  },
+  {
+    "source": "paste food diet",
+    "relation": "RESULTED_IN",
+    "target": "increased bodyweight and urine production",
+    "source_doc": "PMC4136787"
+  },
+  {
+    "source": "Mice in Bion-M 1 Space Mission: Training and Selection",
+    "relation": "COVERS",
+    "target": "microgravity",
+    "source_doc": "PMC4136787"
+  },
+  {
+    "source": "Mice in Bion-M 1 Space Mission: Training and Selection",
+    "relation": "COVERS",
+    "target": "space biomedical research",
+    "source_doc": "PMC4136787"
+  },
+  {
+    "source": "Mice in Bion-M 1 Space Mission: Training and Selection",
+    "relation": "DESCRIBES",
+    "target": "mice training for flight and control experiments",
+    "source_doc": "PMC4136787"
+  },
+  {
+    "source": "mice training for flight and control experiments",
+    "relation": "RESULTED_IN",
+    "target": "successful adaptation to stressful conditions of space flight",
+    "source_doc": "PMC4136787"
+  },
+  {
+    "source": "Mice in Bion-M 1 Space Mission: Training and Selection",
+    "relation": "DESCRIBES",
+    "target": "implantable telemetry in small laboratory animals",
+    "source_doc": "PMC4136787"
+  },
+  {
+    "source": "implantable telemetry in small laboratory animals",
+    "relation": "RESULTED_IN",
+    "target": "increased scientific output",
+    "source_doc": "PMC4136787"
+  },
+  {
+    "source": "Alexander Andreev-Andrievskiy",
+    "relation": "WROTE",
+    "target": "Mice in Bion-M 1 Space Mission: Training and Selection",
+    "source_doc": "PMC4136787"
+  },
+  {
+    "source": "Anfisa Popova",
+    "relation": "WROTE",
+    "target": "Mice in Bion-M 1 Space Mission: Training and Selection",
+    "source_doc": "PMC4136787"
+  },
+  {
+    "source": "Richard Boyle",
+    "relation": "WROTE",
+    "target": "Mice in Bion-M 1 Space Mission: Training and Selection",
+    "source_doc": "PMC4136787"
+  },
+  {
+    "source": "Jeffrey Alberts",
+    "relation": "WROTE",
+    "target": "Mice in Bion-M 1 Space Mission: Training and Selection",
+    "source_doc": "PMC4136787"
+  },
+  {
+    "source": "Boris Shenkman",
+    "relation": "WROTE",
+    "target": "Mice in Bion-M 1 Space Mission: Training and Selection",
+    "source_doc": "PMC4136787"
+  },
+  {
+    "source": "Olga Vinogradova",
+    "relation": "WROTE",
+    "target": "Mice in Bion-M 1 Space Mission: Training and Selection",
+    "source_doc": "PMC4136787"
+  },
+  {
+    "source": "Oleg Dolgov",
+    "relation": "WROTE",
+    "target": "Mice in Bion-M 1 Space Mission: Training and Selection",
+    "source_doc": "PMC4136787"
+  },
+  {
+    "source": "Konstantin Anokhin",
+    "relation": "WROTE",
+    "target": "Mice in Bion-M 1 Space Mission: Training and Selection",
+    "source_doc": "PMC4136787"
+  },
+  {
+    "source": "Darya Tsvirkun",
+    "relation": "WROTE",
+    "target": "Mice in Bion-M 1 Space Mission: Training and Selection",
+    "source_doc": "PMC4136787"
+  },
+  {
+    "source": "Pavel Soldatov",
+    "relation": "WROTE",
+    "target": "Mice in Bion-M 1 Space Mission: Training and Selection",
+    "source_doc": "PMC4136787"
+  },
+  {
+    "source": "Tatyana Nemirovskaya",
+    "relation": "WROTE",
+    "target": "Mice in Bion-M 1 Space Mission: Training and Selection",
+    "source_doc": "PMC4136787"
+  },
+  {
+    "source": "Eugeniy Ilyin",
+    "relation": "WROTE",
+    "target": "Mice in Bion-M 1 Space Mission: Training and Selection",
+    "source_doc": "PMC4136787"
+  },
+  {
+    "source": "Vladimir Sychev",
+    "relation": "WROTE",
+    "target": "Mice in Bion-M 1 Space Mission: Training and Selection",
+    "source_doc": "PMC4136787"
+  },
+  {
+    "source": "Microgravity Induces Pelvic Bone Loss through Osteoclastic Activity, Osteocytic Osteolysis, and Osteoblastic Cell Cycle Inhibition by CDKN1a/p21",
+    "relation": "COVERS",
+    "target": "microgravity",
+    "source_doc": "PMC3630201"
+  },
+  {
+    "source": "Microgravity Induces Pelvic Bone Loss through Osteoclastic Activity, Osteocytic Osteolysis, and Osteoblastic Cell Cycle Inhibition by CDKN1a/p21",
+    "relation": "DESCRIBES",
+    "target": "mice in microgravity for 15 days",
+    "source_doc": "PMC3630201"
+  },
+  {
+    "source": "mice in microgravity for 15 days",
+    "relation": "RESULTED_IN",
+    "target": "bone volume fraction decrease",
+    "source_doc": "PMC3630201"
+  },
+  {
+    "source": "mice in microgravity for 15 days",
+    "relation": "RESULTED_IN",
+    "target": "increased osteoclastic bone degeneration",
+    "source_doc": "PMC3630201"
+  },
+  {
+    "source": "mice in microgravity for 15 days",
+    "relation": "RESULTED_IN",
+    "target": "osteocytic osteolysis",
+    "source_doc": "PMC3630201"
+  },
+  {
+    "source": "mice in microgravity for 15 days",
+    "relation": "RESULTED_IN",
+    "target": "osteogenic cell cycle arrest by CDKN1a/p21",
+    "source_doc": "PMC3630201"
+  },
+  {
+    "source": "Elizabeth A Blaber",
+    "relation": "WROTE",
+    "target": "Microgravity Induces Pelvic Bone Loss through Osteoclastic Activity, Osteocytic Osteolysis, and Osteoblastic Cell Cycle Inhibition by CDKN1a/p21",
+    "source_doc": "PMC3630201"
+  },
+  {
+    "source": "Natalya Dvorochkin",
+    "relation": "WROTE",
+    "target": "Microgravity Induces Pelvic Bone Loss through Osteoclastic Activity, Osteocytic Osteolysis, and Osteoblastic Cell Cycle Inhibition by CDKN1a/p21",
+    "source_doc": "PMC3630201"
+  },
+  {
+    "source": "Chialing Lee",
+    "relation": "WROTE",
+    "target": "Microgravity Induces Pelvic Bone Loss through Osteoclastic Activity, Osteocytic Osteolysis, and Osteoblastic Cell Cycle Inhibition by CDKN1a/p21",
+    "source_doc": "PMC3630201"
+  },
+  {
+    "source": "Joshua S Alwood",
+    "relation": "WROTE",
+    "target": "Microgravity Induces Pelvic Bone Loss through Osteoclastic Activity, Osteocytic Osteolysis, and Osteoblastic Cell Cycle Inhibition by CDKN1a/p21",
+    "source_doc": "PMC3630201"
+  },
+  {
+    "source": "Rukhsana Yousuf",
+    "relation": "WROTE",
+    "target": "Microgravity Induces Pelvic Bone Loss through Osteoclastic Activity, Osteocytic Osteolysis, and Osteoblastic Cell Cycle Inhibition by CDKN1a/p21",
+    "source_doc": "PMC3630201"
+  },
+  {
+    "source": "Piero Pianetta",
+    "relation": "WROTE",
+    "target": "Microgravity Induces Pelvic Bone Loss through Osteoclastic Activity, Osteocytic Osteolysis, and Osteoblastic Cell Cycle Inhibition by CDKN1a/p21",
+    "source_doc": "PMC3630201"
+  },
+  {
+    "source": "Ruth K Globus",
+    "relation": "WROTE",
+    "target": "Microgravity Induces Pelvic Bone Loss through Osteoclastic Activity, Osteocytic Osteolysis, and Osteoblastic Cell Cycle Inhibition by CDKN1a/p21",
+    "source_doc": "PMC3630201"
+  },
+  {
+    "source": "Brendan P Burns",
+    "relation": "WROTE",
+    "target": "Microgravity Induces Pelvic Bone Loss through Osteoclastic Activity, Osteocytic Osteolysis, and Osteoblastic Cell Cycle Inhibition by CDKN1a/p21",
+    "source_doc": "PMC3630201"
+  },
+  {
+    "source": "Eduardo A C Almeida",
+    "relation": "WROTE",
+    "target": "Microgravity Induces Pelvic Bone Loss through Osteoclastic Activity, Osteocytic Osteolysis, and Osteoblastic Cell Cycle Inhibition by CDKN1a/p21",
+    "source_doc": "PMC3630201"
+  },
+  {
+    "source": "Microgravity and Cellular Biology: Insights into Cellular Responses and Implications for Human Health",
+    "relation": "COVERS",
+    "target": "microgravity",
+    "source_doc": "PMC11988870"
+  },
+  {
+    "source": "Microgravity and Cellular Biology: Insights into Cellular Responses and Implications for Human Health",
+    "relation": "COVERS",
+    "target": "tissue effects",
+    "source_doc": "PMC11988870"
+  },
+  {
+    "source": "Microgravity and Cellular Biology: Insights into Cellular Responses and Implications for Human Health",
+    "relation": "COVERS",
+    "target": "immune system",
+    "source_doc": "PMC11988870"
+  },
+  {
+    "source": "Microgravity and Cellular Biology: Insights into Cellular Responses and Implications for Human Health",
+    "relation": "COVERS",
+    "target": "cardiomyocytes",
+    "source_doc": "PMC11988870"
+  },
+  {
+    "source": "Microgravity and Cellular Biology: Insights into Cellular Responses and Implications for Human Health",
+    "relation": "COVERS",
+    "target": "cancer biology",
+    "source_doc": "PMC11988870"
+  },
+  {
+    "source": "Microgravity and Cellular Biology: Insights into Cellular Responses and Implications for Human Health",
+    "relation": "COVERS",
+    "target": "human health",
+    "source_doc": "PMC11988870"
+  },
+  {
+    "source": "Microgravity and Cellular Biology: Insights into Cellular Responses and Implications for Human Health",
+    "relation": "COVERS",
+    "target": "microgravity",
+    "source_doc": "PMC11988870"
+  },
+  {
+    "source": "Microgravity and Cellular Biology: Insights into Cellular Responses and Implications for Human Health",
+    "relation": "COVERS",
+    "target": "immune system",
+    "source_doc": "PMC11988870"
+  },
+  {
+    "source": "Microgravity and Cellular Biology: Insights into Cellular Responses and Implications for Human Health",
+    "relation": "COVERS",
+    "target": "cancer cells",
+    "source_doc": "PMC11988870"
+  },
+  {
+    "source": "Microgravity and Cellular Biology: Insights into Cellular Responses and Implications for Human Health",
+    "relation": "COVERS",
+    "target": "stem cells",
+    "source_doc": "PMC11988870"
+  },
+  {
+    "source": "Microgravity and Cellular Biology: Insights into Cellular Responses and Implications for Human Health",
+    "relation": "COVERS",
+    "target": "regenerative medicine",
+    "source_doc": "PMC11988870"
+  },
+  {
+    "source": "Microgravity and Cellular Biology: Insights into Cellular Responses and Implications for Human Health",
+    "relation": "COVERS",
+    "target": "tissue regeneration",
+    "source_doc": "PMC11988870"
+  },
+  {
+    "source": "Nelson Adolfo López Garzón",
+    "relation": "WROTE",
+    "target": "Microgravity and Cellular Biology: Insights into Cellular Responses and Implications for Human Health",
+    "source_doc": "PMC11988870"
+  },
+  {
+    "source": "María Virginia Pinzón-Fernández",
+    "relation": "WROTE",
+    "target": "Microgravity and Cellular Biology: Insights into Cellular Responses and Implications for Human Health",
+    "source_doc": "PMC11988870"
+  },
+  {
+    "source": "Jhan S Saavedra T",
+    "relation": "WROTE",
+    "target": "Microgravity and Cellular Biology: Insights into Cellular Responses and Implications for Human Health",
+    "source_doc": "PMC11988870"
+  },
+  {
+    "source": "Humberto A Nati-Castillo",
+    "relation": "WROTE",
+    "target": "Microgravity and Cellular Biology: Insights into Cellular Responses and Implications for Human Health",
+    "source_doc": "PMC11988870"
+  },
+  {
+    "source": "Marlon Arias-Intriago",
+    "relation": "WROTE",
+    "target": "Microgravity and Cellular Biology: Insights into Cellular Responses and Implications for Human Health",
+    "source_doc": "PMC11988870"
+  },
+  {
+    "source": "Camila Salazar-Santoliva",
+    "relation": "WROTE",
+    "target": "Microgravity and Cellular Biology: Insights into Cellular Responses and Implications for Human Health",
+    "source_doc": "PMC11988870"
+  },
+  {
+    "source": "Juan S Izquierdo-Condoy",
+    "relation": "WROTE",
+    "target": "Microgravity and Cellular Biology: Insights into Cellular Responses and Implications for Human Health",
+    "source_doc": "PMC11988870"
+  },
+  {
+    "source": "Selective Proliferation of Highly Functional Adipose-Derived Stem Cells in Microgravity Culture with Stirred Microspheres",
+    "relation": "COVERS",
+    "target": "adipose-derived stem cell",
+    "source_doc": "PMC7998608"
+  },
+  {
+    "source": "Selective Proliferation of Highly Functional Adipose-Derived Stem Cells in Microgravity Culture with Stirred Microspheres",
+    "relation": "COVERS",
+    "target": "microgravity culture",
+    "source_doc": "PMC7998608"
+  },
+  {
+    "source": "Selective Proliferation of Highly Functional Adipose-Derived Stem Cells in Microgravity Culture with Stirred Microspheres",
+    "relation": "COVERS",
+    "target": "polystyrene microsphere",
+    "source_doc": "PMC7998608"
+  },
+  {
+    "source": "Selective Proliferation of Highly Functional Adipose-Derived Stem Cells in Microgravity Culture with Stirred Microspheres",
+    "relation": "COVERS",
+    "target": "collagen microsphere",
+    "source_doc": "PMC7998608"
+  },
+  {
+    "source": "Selective Proliferation of Highly Functional Adipose-Derived Stem Cells in Microgravity Culture with Stirred Microspheres",
+    "relation": "COVERS",
+    "target": "multilineage-differentiating stress-enduring cell",
+    "source_doc": "PMC7998608"
+  },
+  {
+    "source": "Selective Proliferation of Highly Functional Adipose-Derived Stem Cells in Microgravity Culture with Stirred Microspheres",
+    "relation": "DESCRIBES",
+    "target": "preservation of stemness in human adipose-derived stem cells using microgravity and microspheres",
+    "source_doc": "PMC7998608"
+  },
+  {
+    "source": "preservation of stemness in human adipose-derived stem cells using microgravity and microspheres",
+    "relation": "RESULTED_IN",
+    "target": "increased proportions of SSEA-3(+) hASCs",
+    "source_doc": "PMC7998608"
+  },
+  {
+    "source": "preservation of stemness in human adipose-derived stem cells using microgravity and microspheres",
+    "relation": "RESULTED_IN",
+    "target": "higher levels of pluripotent markers",
+    "source_doc": "PMC7998608"
+  },
+  {
+    "source": "preservation of stemness in human adipose-derived stem cells using microgravity and microspheres",
+    "relation": "RESULTED_IN",
+    "target": "improved abilities for proliferation, colony formation, network formation, and multiple-mesenchymal differentiation",
+    "source_doc": "PMC7998608"
+  },
+  {
+    "source": "Selective Proliferation of Highly Functional Adipose-Derived Stem Cells in Microgravity Culture with Stirred Microspheres",
+    "relation": "COVERS",
+    "target": "microgravity",
+    "source_doc": "PMC7998608"
+  },
+  {
+    "source": "Selective Proliferation of Highly Functional Adipose-Derived Stem Cells in Microgravity Culture with Stirred Microspheres",
+    "relation": "COVERS",
+    "target": "stem cells",
+    "source_doc": "PMC7998608"
+  },
+  {
+    "source": "Selective Proliferation of Highly Functional Adipose-Derived Stem Cells in Microgravity Culture with Stirred Microspheres",
+    "relation": "DESCRIBES",
+    "target": "culturing hASCs with microspheres in three-dimensional movement to create microgravity",
+    "source_doc": "PMC7998608"
+  },
+  {
+    "source": "culturing hASCs with microspheres in three-dimensional movement to create microgravity",
+    "relation": "RESULTED_IN",
+    "target": "enhanced proliferation of highly functional stem cells",
+    "source_doc": "PMC7998608"
+  },
+  {
+    "source": "Takanobu Mashiko",
+    "relation": "WROTE",
+    "target": "Selective Proliferation of Highly Functional Adipose-Derived Stem Cells in Microgravity Culture with Stirred Microspheres",
+    "source_doc": "PMC7998608"
+  },
+  {
+    "source": "Koji Kanayama",
+    "relation": "WROTE",
+    "target": "Selective Proliferation of Highly Functional Adipose-Derived Stem Cells in Microgravity Culture with Stirred Microspheres",
+    "source_doc": "PMC7998608"
+  },
+  {
+    "source": "Natsumi Saito",
+    "relation": "WROTE",
+    "target": "Selective Proliferation of Highly Functional Adipose-Derived Stem Cells in Microgravity Culture with Stirred Microspheres",
+    "source_doc": "PMC7998608"
+  },
+  {
+    "source": "Takako Shirado",
+    "relation": "WROTE",
+    "target": "Selective Proliferation of Highly Functional Adipose-Derived Stem Cells in Microgravity Culture with Stirred Microspheres",
+    "source_doc": "PMC7998608"
+  },
+  {
+    "source": "Rintaro Asahi",
+    "relation": "WROTE",
+    "target": "Selective Proliferation of Highly Functional Adipose-Derived Stem Cells in Microgravity Culture with Stirred Microspheres",
+    "source_doc": "PMC7998608"
+  },
+  {
+    "source": "Masanori Mori",
+    "relation": "WROTE",
+    "target": "Selective Proliferation of Highly Functional Adipose-Derived Stem Cells in Microgravity Culture with Stirred Microspheres",
+    "source_doc": "PMC7998608"
+  },
+  {
+    "source": "Kotaro Yoshimura",
+    "relation": "WROTE",
+    "target": "Selective Proliferation of Highly Functional Adipose-Derived Stem Cells in Microgravity Culture with Stirred Microspheres",
+    "source_doc": "PMC7998608"
+  },
+  {
+    "source": "Microgravity validation of a novel system for RNA isolation and multiplex quantitative real time PCR analysis of gene expression on the International Space Station",
+    "relation": "COVERS",
+    "target": "microgravity",
+    "source_doc": "PMC5587110"
+  },
+  {
+    "source": "Microgravity validation of a novel system for RNA isolation and multiplex quantitative real time PCR analysis of gene expression on the International Space Station",
+    "relation": "DESCRIBES",
+    "target": "WetLab-2 validation experiments conducted in microgravity during ISS increment 47/SPX-8",
+    "source_doc": "PMC5587110"
+  },
+  {
+    "source": "WetLab-2 validation experiments conducted in microgravity during ISS increment 47/SPX-8",
+    "relation": "RESULTED_IN",
+    "target": "similar PCR efficiencies and Ct values in microgravity compared to Earth",
+    "source_doc": "PMC5587110"
+  },
+  {
+    "source": "Macarena Parra",
+    "relation": "WROTE",
+    "target": "Microgravity validation of a novel system for RNA isolation and multiplex quantitative real time PCR analysis of gene expression on the International Space Station",
+    "source_doc": "PMC5587110"
+  },
+  {
+    "source": "Jimmy Jung",
+    "relation": "WROTE",
+    "target": "Microgravity validation of a novel system for RNA isolation and multiplex quantitative real time PCR analysis of gene expression on the International Space Station",
+    "source_doc": "PMC5587110"
+  },
+  {
+    "source": "Travis D Boone",
+    "relation": "WROTE",
+    "target": "Microgravity validation of a novel system for RNA isolation and multiplex quantitative real time PCR analysis of gene expression on the International Space Station",
+    "source_doc": "PMC5587110"
+  },
+  {
+    "source": "Luan Tran",
+    "relation": "WROTE",
+    "target": "Microgravity validation of a novel system for RNA isolation and multiplex quantitative real time PCR analysis of gene expression on the International Space Station",
+    "source_doc": "PMC5587110"
+  },
+  {
+    "source": "Elizabeth A Blaber",
+    "relation": "WROTE",
+    "target": "Microgravity validation of a novel system for RNA isolation and multiplex quantitative real time PCR analysis of gene expression on the International Space Station",
+    "source_doc": "PMC5587110"
+  },
+  {
+    "source": "Mark Brown",
+    "relation": "WROTE",
+    "target": "Microgravity validation of a novel system for RNA isolation and multiplex quantitative real time PCR analysis of gene expression on the International Space Station",
+    "source_doc": "PMC5587110"
+  },
+  {
+    "source": "Matthew Chin",
+    "relation": "WROTE",
+    "target": "Microgravity validation of a novel system for RNA isolation and multiplex quantitative real time PCR analysis of gene expression on the International Space Station",
+    "source_doc": "PMC5587110"
+  },
+  {
+    "source": "Tori Chinn",
+    "relation": "WROTE",
+    "target": "Microgravity validation of a novel system for RNA isolation and multiplex quantitative real time PCR analysis of gene expression on the International Space Station",
+    "source_doc": "PMC5587110"
+  },
+  {
+    "source": "Jacob Cohen",
+    "relation": "WROTE",
+    "target": "Microgravity validation of a novel system for RNA isolation and multiplex quantitative real time PCR analysis of gene expression on the International Space Station",
+    "source_doc": "PMC5587110"
+  },
+  {
+    "source": "Robert Doebler",
+    "relation": "WROTE",
+    "target": "Microgravity validation of a novel system for RNA isolation and multiplex quantitative real time PCR analysis of gene expression on the International Space Station",
+    "source_doc": "PMC5587110"
+  },
+  {
+    "source": "Dzung Hoang",
+    "relation": "WROTE",
+    "target": "Microgravity validation of a novel system for RNA isolation and multiplex quantitative real time PCR analysis of gene expression on the International Space Station",
+    "source_doc": "PMC5587110"
+  },
+  {
+    "source": "Elizabeth Hyde",
+    "relation": "WROTE",
+    "target": "Microgravity validation of a novel system for RNA isolation and multiplex quantitative real time PCR analysis of gene expression on the International Space Station",
+    "source_doc": "PMC5587110"
+  },
+  {
+    "source": "Matthew Lera",
+    "relation": "WROTE",
+    "target": "Microgravity validation of a novel system for RNA isolation and multiplex quantitative real time PCR analysis of gene expression on the International Space Station",
+    "source_doc": "PMC5587110"
+  },
+  {
+    "source": "Louie T Luzod",
+    "relation": "WROTE",
+    "target": "Microgravity validation of a novel system for RNA isolation and multiplex quantitative real time PCR analysis of gene expression on the International Space Station",
+    "source_doc": "PMC5587110"
+  },
+  {
+    "source": "Mark Mallinson",
+    "relation": "WROTE",
+    "target": "Microgravity validation of a novel system for RNA isolation and multiplex quantitative real time PCR analysis of gene expression on the International Space Station",
+    "source_doc": "PMC5587110"
+  },
+  {
+    "source": "Oana Marcu",
+    "relation": "WROTE",
+    "target": "Microgravity validation of a novel system for RNA isolation and multiplex quantitative real time PCR analysis of gene expression on the International Space Station",
+    "source_doc": "PMC5587110"
+  },
+  {
+    "source": "Youssef Mohamedaly",
+    "relation": "WROTE",
+    "target": "Microgravity validation of a novel system for RNA isolation and multiplex quantitative real time PCR analysis of gene expression on the International Space Station",
+    "source_doc": "PMC5587110"
+  },
+  {
+    "source": "Antonio J Ricco",
+    "relation": "WROTE",
+    "target": "Microgravity validation of a novel system for RNA isolation and multiplex quantitative real time PCR analysis of gene expression on the International Space Station",
+    "source_doc": "PMC5587110"
+  },
+  {
+    "source": "Kathleen Rubins",
+    "relation": "WROTE",
+    "target": "Microgravity validation of a novel system for RNA isolation and multiplex quantitative real time PCR analysis of gene expression on the International Space Station",
+    "source_doc": "PMC5587110"
+  },
+  {
+    "source": "Gregory D Sgarlato",
+    "relation": "WROTE",
+    "target": "Microgravity validation of a novel system for RNA isolation and multiplex quantitative real time PCR analysis of gene expression on the International Space Station",
+    "source_doc": "PMC5587110"
+  },
+  {
+    "source": "Rafael O Talavera",
+    "relation": "WROTE",
+    "target": "Microgravity validation of a novel system for RNA isolation and multiplex quantitative real time PCR analysis of gene expression on the International Space Station",
+    "source_doc": "PMC5587110"
+  },
+  {
+    "source": "Peter Tong",
+    "relation": "WROTE",
+    "target": "Microgravity validation of a novel system for RNA isolation and multiplex quantitative real time PCR analysis of gene expression on the International Space Station",
+    "source_doc": "PMC5587110"
+  },
+  {
+    "source": "Eddie Uribe",
+    "relation": "WROTE",
+    "target": "Microgravity validation of a novel system for RNA isolation and multiplex quantitative real time PCR analysis of gene expression on the International Space Station",
+    "source_doc": "PMC5587110"
+  },
+  {
+    "source": "Jeffrey Williams",
+    "relation": "WROTE",
+    "target": "Microgravity validation of a novel system for RNA isolation and multiplex quantitative real time PCR analysis of gene expression on the International Space Station",
+    "source_doc": "PMC5587110"
+  },
+  {
+    "source": "Diana Wu",
+    "relation": "WROTE",
+    "target": "Microgravity validation of a novel system for RNA isolation and multiplex quantitative real time PCR analysis of gene expression on the International Space Station",
+    "source_doc": "PMC5587110"
+  },
+  {
+    "source": "Rukhsana Yousuf",
+    "relation": "WROTE",
+    "target": "Microgravity validation of a novel system for RNA isolation and multiplex quantitative real time PCR analysis of gene expression on the International Space Station",
+    "source_doc": "PMC5587110"
+  },
+  {
+    "source": "Charles S Richey",
+    "relation": "WROTE",
+    "target": "Microgravity validation of a novel system for RNA isolation and multiplex quantitative real time PCR analysis of gene expression on the International Space Station",
+    "source_doc": "PMC5587110"
+  },
+  {
+    "source": "Julie Schonfeld",
+    "relation": "WROTE",
+    "target": "Microgravity validation of a novel system for RNA isolation and multiplex quantitative real time PCR analysis of gene expression on the International Space Station",
+    "source_doc": "PMC5587110"
+  },
+  {
+    "source": "Eduardo A C Almeida",
+    "relation": "WROTE",
+    "target": "Microgravity validation of a novel system for RNA isolation and multiplex quantitative real time PCR analysis of gene expression on the International Space Station",
+    "source_doc": "PMC5587110"
+  },
+  {
+    "source": "Spaceflight Modulates the Expression of Key Oxidative Stress and Cell Cycle Related Genes in Heart",
+    "relation": "COVERS",
+    "target": "microgravity",
+    "source_doc": "PMC8396460"
+  },
+  {
+    "source": "Spaceflight Modulates the Expression of Key Oxidative Stress and Cell Cycle Related Genes in Heart",
+    "relation": "COVERS",
+    "target": "heart",
+    "source_doc": "PMC8396460"
+  },
+  {
+    "source": "Spaceflight Modulates the Expression of Key Oxidative Stress and Cell Cycle Related Genes in Heart",
+    "relation": "COVERS",
+    "target": "gene expression",
+    "source_doc": "PMC8396460"
+  },
+  {
+    "source": "Spaceflight Modulates the Expression of Key Oxidative Stress and Cell Cycle Related Genes in Heart",
+    "relation": "COVERS",
+    "target": "oxidative stress",
+    "source_doc": "PMC8396460"
+  },
+  {
+    "source": "Spaceflight Modulates the Expression of Key Oxidative Stress and Cell Cycle Related Genes in Heart",
+    "relation": "DESCRIBES",
+    "target": "mice exposed to spaceflight for 15 days",
+    "source_doc": "PMC8396460"
+  },
+  {
+    "source": "Spaceflight Modulates the Expression of Key Oxidative Stress and Cell Cycle Related Genes in Heart",
+    "relation": "COVERS",
+    "target": "cardiac expression of genes",
+    "source_doc": "PMC8396460"
+  },
+  {
+    "source": "Spaceflight Modulates the Expression of Key Oxidative Stress and Cell Cycle Related Genes in Heart",
+    "relation": "COVERS",
+    "target": "cell cycle/growth",
+    "source_doc": "PMC8396460"
+  },
+  {
+    "source": "Spaceflight Modulates the Expression of Key Oxidative Stress and Cell Cycle Related Genes in Heart",
+    "relation": "COVERS",
+    "target": "inflammation",
+    "source_doc": "PMC8396460"
+  },
+  {
+    "source": "Spaceflight Modulates the Expression of Key Oxidative Stress and Cell Cycle Related Genes in Heart",
+    "relation": "COVERS",
+    "target": "oxidative stress",
+    "source_doc": "PMC8396460"
+  },
+  {
+    "source": "Spaceflight Modulates the Expression of Key Oxidative Stress and Cell Cycle Related Genes in Heart",
+    "relation": "COVERS",
+    "target": "cardiac dysfunction",
+    "source_doc": "PMC8396460"
+  },
+  {
+    "source": "Spaceflight Modulates the Expression of Key Oxidative Stress and Cell Cycle Related Genes in Heart",
+    "relation": "COVERS",
+    "target": "ROS generation during spaceflight",
+    "source_doc": "PMC8396460"
+  },
+  {
+    "source": "Akhilesh Kumar",
+    "relation": "WROTE",
+    "target": "Spaceflight Modulates the Expression of Key Oxidative Stress and Cell Cycle Related Genes in Heart",
+    "source_doc": "PMC8396460"
+  },
+  {
+    "source": "Candice G T Tahimic",
+    "relation": "WROTE",
+    "target": "Spaceflight Modulates the Expression of Key Oxidative Stress and Cell Cycle Related Genes in Heart",
+    "source_doc": "PMC8396460"
+  },
+  {
+    "source": "Eduardo A C Almeida",
+    "relation": "WROTE",
+    "target": "Spaceflight Modulates the Expression of Key Oxidative Stress and Cell Cycle Related Genes in Heart",
+    "source_doc": "PMC8396460"
+  },
+  {
+    "source": "Ruth K Globus",
+    "relation": "WROTE",
+    "target": "Spaceflight Modulates the Expression of Key Oxidative Stress and Cell Cycle Related Genes in Heart",
+    "source_doc": "PMC8396460"
+  },
+  {
+    "source": "Dose- and Ion-Dependent Effects in the Oxidative Stress Response to Space-Like Radiation Exposure in the Skeletal System",
+    "relation": "COVERS",
+    "target": "cancellous bone",
+    "source_doc": "PMC5666799"
+  },
+  {
+    "source": "Dose- and Ion-Dependent Effects in the Oxidative Stress Response to Space-Like Radiation Exposure in the Skeletal System",
+    "relation": "COVERS",
+    "target": "osteoblast",
+    "source_doc": "PMC5666799"
+  },
+  {
+    "source": "Dose- and Ion-Dependent Effects in the Oxidative Stress Response to Space-Like Radiation Exposure in the Skeletal System",
+    "relation": "COVERS",
+    "target": "ionizing radiation",
+    "source_doc": "PMC5666799"
+  },
+  {
+    "source": "Dose- and Ion-Dependent Effects in the Oxidative Stress Response to Space-Like Radiation Exposure in the Skeletal System",
+    "relation": "COVERS",
+    "target": "spaceflight",
+    "source_doc": "PMC5666799"
+  },
+  {
+    "source": "Dose- and Ion-Dependent Effects in the Oxidative Stress Response to Space-Like Radiation Exposure in the Skeletal System",
+    "relation": "COVERS",
+    "target": "oxidative stress",
+    "source_doc": "PMC5666799"
+  },
+  {
+    "source": "Dose- and Ion-Dependent Effects in the Oxidative Stress Response to Space-Like Radiation Exposure in the Skeletal System",
+    "relation": "DESCRIBES",
+    "target": "mice exposed to low and high doses of ionizing radiation",
+    "source_doc": "PMC5666799"
+  },
+  {
+    "source": "mice exposed to low and high doses of ionizing radiation",
+    "relation": "RESULTED_IN",
+    "target": "persistent bone loss from high-LET irradiation at 200 cGy",
+    "source_doc": "PMC5666799"
+  },
+  {
+    "source": "Joshua S Alwood",
+    "relation": "WROTE",
+    "target": "Dose- and Ion-Dependent Effects in the Oxidative Stress Response to Space-Like Radiation Exposure in the Skeletal System",
+    "source_doc": "PMC5666799"
+  },
+  {
+    "source": "Luan H Tran",
+    "relation": "WROTE",
+    "target": "Dose- and Ion-Dependent Effects in the Oxidative Stress Response to Space-Like Radiation Exposure in the Skeletal System",
+    "source_doc": "PMC5666799"
+  },
+  {
+    "source": "Ann-Sofie Schreurs",
+    "relation": "WROTE",
+    "target": "Dose- and Ion-Dependent Effects in the Oxidative Stress Response to Space-Like Radiation Exposure in the Skeletal System",
+    "source_doc": "PMC5666799"
+  },
+  {
+    "source": "Yasaman Shirazi-Fard",
+    "relation": "WROTE",
+    "target": "Dose- and Ion-Dependent Effects in the Oxidative Stress Response to Space-Like Radiation Exposure in the Skeletal System",
+    "source_doc": "PMC5666799"
+  },
+  {
+    "source": "Akhilesh Kumar",
+    "relation": "WROTE",
+    "target": "Dose- and Ion-Dependent Effects in the Oxidative Stress Response to Space-Like Radiation Exposure in the Skeletal System",
+    "source_doc": "PMC5666799"
+  },
+  {
+    "source": "Diane Hilton",
+    "relation": "WROTE",
+    "target": "Dose- and Ion-Dependent Effects in the Oxidative Stress Response to Space-Like Radiation Exposure in the Skeletal System",
+    "source_doc": "PMC5666799"
+  },
+  {
+    "source": "Candice G T Tahimic",
+    "relation": "WROTE",
+    "target": "Dose- and Ion-Dependent Effects in the Oxidative Stress Response to Space-Like Radiation Exposure in the Skeletal System",
+    "source_doc": "PMC5666799"
+  },
+  {
+    "source": "Ruth K Globus",
+    "relation": "WROTE",
+    "target": "Dose- and Ion-Dependent Effects in the Oxidative Stress Response to Space-Like Radiation Exposure in the Skeletal System",
+    "source_doc": "PMC5666799"
+  },
+  {
+    "source": "From the bench to exploration medicine: NASA life sciences translational research for human exploration and habitation missions",
+    "relation": "COVERS",
+    "target": "translational research at NASA",
+    "source_doc": "PMC5460236"
+  },
+  {
+    "source": "Joshua S Alwood",
+    "relation": "WROTE",
+    "target": "From the bench to exploration medicine: NASA life sciences translational research for human exploration and habitation missions",
+    "source_doc": "PMC5460236"
+  },
+  {
+    "source": "April E Ronca",
+    "relation": "WROTE",
+    "target": "From the bench to exploration medicine: NASA life sciences translational research for human exploration and habitation missions",
+    "source_doc": "PMC5460236"
+  },
+  {
+    "source": "Richard C Mains",
+    "relation": "WROTE",
+    "target": "From the bench to exploration medicine: NASA life sciences translational research for human exploration and habitation missions",
+    "source_doc": "PMC5460236"
+  },
+  {
+    "source": "Mark J Shelhamer",
+    "relation": "WROTE",
+    "target": "From the bench to exploration medicine: NASA life sciences translational research for human exploration and habitation missions",
+    "source_doc": "PMC5460236"
+  },
+  {
+    "source": "Jeffrey D Smith",
+    "relation": "WROTE",
+    "target": "From the bench to exploration medicine: NASA life sciences translational research for human exploration and habitation missions",
+    "source_doc": "PMC5460236"
+  },
+  {
+    "source": "Thomas J Goodwin",
+    "relation": "WROTE",
+    "target": "From the bench to exploration medicine: NASA life sciences translational research for human exploration and habitation missions",
+    "source_doc": "PMC5460236"
+  },
+  {
+    "source": "High-precision method for cyclic loading of small-animal vertebrae to assess bone quality",
+    "relation": "COVERS",
+    "target": "Bone mechanics",
+    "source_doc": "PMC6222041"
+  },
+  {
+    "source": "High-precision method for cyclic loading of small-animal vertebrae to assess bone quality",
+    "relation": "COVERS",
+    "target": "Fatigue",
+    "source_doc": "PMC6222041"
+  },
+  {
+    "source": "High-precision method for cyclic loading of small-animal vertebrae to assess bone quality",
+    "relation": "COVERS",
+    "target": "Bone quality",
+    "source_doc": "PMC6222041"
+  },
+  {
+    "source": "High-precision method for cyclic loading of small-animal vertebrae to assess bone quality",
+    "relation": "DESCRIBES",
+    "target": "ex vivo cyclic compressive loading of isolated mouse vertebral bodies",
+    "source_doc": "PMC6222041"
+  },
+  {
+    "source": "ex vivo cyclic compressive loading of isolated mouse vertebral bodies",
+    "relation": "RESULTED_IN",
+    "target": "reduced scatter of the mechanical behavior",
+    "source_doc": "PMC6222041"
+  },
+  {
+    "source": "Megan M Pendleton",
+    "relation": "WROTE",
+    "target": "High-precision method for cyclic loading of small-animal vertebrae to assess bone quality",
+    "source_doc": "PMC6222041"
+  },
+  {
+    "source": "Saghi Sadoughi",
+    "relation": "WROTE",
+    "target": "High-precision method for cyclic loading of small-animal vertebrae to assess bone quality",
+    "source_doc": "PMC6222041"
+  },
+  {
+    "source": "Alfred Li",
+    "relation": "WROTE",
+    "target": "High-precision method for cyclic loading of small-animal vertebrae to assess bone quality",
+    "source_doc": "PMC6222041"
+  },
+  {
+    "source": "Grace D O'Connell",
+    "relation": "WROTE",
+    "target": "High-precision method for cyclic loading of small-animal vertebrae to assess bone quality",
+    "source_doc": "PMC6222041"
+  },
+  {
+    "source": "Joshua S Alwood",
+    "relation": "WROTE",
+    "target": "High-precision method for cyclic loading of small-animal vertebrae to assess bone quality",
+    "source_doc": "PMC6222041"
+  },
+  {
+    "source": "Tony M Keaveny",
+    "relation": "WROTE",
+    "target": "High-precision method for cyclic loading of small-animal vertebrae to assess bone quality",
+    "source_doc": "PMC6222041"
+  },
+  {
+    "source": "Effects of ex vivo Ionizing Radiation on Collagen Structure and Whole-Bone Mechanical Properties of Mouse Vertebrae",
+    "relation": "COVERS",
+    "target": "ionizing radiation",
+    "source_doc": "PMC6813909"
+  },
+  {
+    "source": "Effects of ex vivo Ionizing Radiation on Collagen Structure and Whole-Bone Mechanical Properties of Mouse Vertebrae",
+    "relation": "COVERS",
+    "target": "bone strength",
+    "source_doc": "PMC6813909"
+  },
+  {
+    "source": "Effects of ex vivo Ionizing Radiation on Collagen Structure and Whole-Bone Mechanical Properties of Mouse Vertebrae",
+    "relation": "COVERS",
+    "target": "fatigue",
+    "source_doc": "PMC6813909"
+  },
+  {
+    "source": "Effects of ex vivo Ionizing Radiation on Collagen Structure and Whole-Bone Mechanical Properties of Mouse Vertebrae",
+    "relation": "COVERS",
+    "target": "collagen",
+    "source_doc": "PMC6813909"
+  },
+  {
+    "source": "Effects of ex vivo Ionizing Radiation on Collagen Structure and Whole-Bone Mechanical Properties of Mouse Vertebrae",
+    "relation": "COVERS",
+    "target": "sterilization",
+    "source_doc": "PMC6813909"
+  },
+  {
+    "source": "Effects of ex vivo Ionizing Radiation on Collagen Structure and Whole-Bone Mechanical Properties of Mouse Vertebrae",
+    "relation": "COVERS",
+    "target": "bone-graft",
+    "source_doc": "PMC6813909"
+  },
+  {
+    "source": "Effects of ex vivo Ionizing Radiation on Collagen Structure and Whole-Bone Mechanical Properties of Mouse Vertebrae",
+    "relation": "DESCRIBES",
+    "target": "ex vivo x-ray radiation experiment on excised mouse lumbar vertebrae",
+    "source_doc": "PMC6813909"
+  },
+  {
+    "source": "ex vivo x-ray radiation experiment on excised mouse lumbar vertebrae",
+    "relation": "RESULTED_IN",
+    "target": "reductions in bone compressive monotonic strength and fatigue life due to ionizing radiation",
+    "source_doc": "PMC6813909"
+  },
+  {
+    "source": "Megan M Pendleton",
+    "relation": "WROTE",
+    "target": "Effects ofex vivoIonizing Radiation on Collagen Structure and Whole-Bone Mechanical Properties of Mouse Vertebrae",
+    "source_doc": "PMC6813909"
+  },
+  {
+    "source": "Shannon R Emerzian",
+    "relation": "WROTE",
+    "target": "Effects ofex vivoIonizing Radiation on Collagen Structure and Whole-Bone Mechanical Properties of Mouse Vertebrae",
+    "source_doc": "PMC6813909"
+  },
+  {
+    "source": "Jennifer Liu",
+    "relation": "WROTE",
+    "target": "Effects ofex vivoIonizing Radiation on Collagen Structure and Whole-Bone Mechanical Properties of Mouse Vertebrae",
+    "source_doc": "PMC6813909"
+  },
+  {
+    "source": "Simon Y Tang",
+    "relation": "WROTE",
+    "target": "Effects ofex vivoIonizing Radiation on Collagen Structure and Whole-Bone Mechanical Properties of Mouse Vertebrae",
+    "source_doc": "PMC6813909"
+  },
+  {
+    "source": "Grace D O’Connell",
+    "relation": "WROTE",
+    "target": "Effects ofex vivoIonizing Radiation on Collagen Structure and Whole-Bone Mechanical Properties of Mouse Vertebrae",
+    "source_doc": "PMC6813909"
+  },
+  {
+    "source": "Joshua S Alwood",
+    "relation": "WROTE",
+    "target": "Effects ofex vivoIonizing Radiation on Collagen Structure and Whole-Bone Mechanical Properties of Mouse Vertebrae",
+    "source_doc": "PMC6813909"
+  },
+  {
+    "source": "Tony M Keaveny",
+    "relation": "WROTE",
+    "target": "Effects ofex vivoIonizing Radiation on Collagen Structure and Whole-Bone Mechanical Properties of Mouse Vertebrae",
+    "source_doc": "PMC6813909"
+  }
+]

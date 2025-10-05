@@ -1,0 +1,6 @@
+Relaciones más frecuentes y su conteo:
+==================================================
+wrote: 96
+covers: 50
+resulted_in: 17
+describes: 13
