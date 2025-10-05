@@ -33,20 +33,55 @@ class Neo4jUploader:
 
         # Busca la relación canónica, si no existe, usa 'RELATED_TO' como default
         canonical_relation = relation_mapping.get(raw_relation, 'RELATED_TO')
-        
+        canonical_relation_upper = str(canonical_relation).upper()
+
+        # Inferir el tipo de las entidades según la relación canónica (fallback a 'Entity')
+        RELATION_TO_TYPES = {
+            # Common canonical tokens or grouping names -> (source_type, target_type)
+            'WROTE': ('Author', 'Article'),
+            'AUTHORSHIP': ('Author', 'Article'),
+            'COVERS': ('Article', 'Topic'),
+            'CONTENT': ('Article', 'Topic'),
+            'DESCRIBES': ('Article', 'Experiment'),
+            'RESULTED_IN': ('Experiment', 'Finding'),
+            'CITES': ('Article', 'Article'),
+            'REPORTS': ('Article', 'Finding'),
+            'USES': ('Article', 'Topic'),
+        }
+
+        source_type, target_type = RELATION_TO_TYPES.get(canonical_relation_upper, ('Entity', 'Entity'))
+
+        # Heurísticas adicionales: si el nombre parece un identificador PMC, marcar como Article
+        def looks_like_pmc(text: str) -> bool:
+            if not text:
+                return False
+            return bool(__import__('re').match(r'^PMC\d+', text.strip(), flags=__import__('re').IGNORECASE))
+
+        if looks_like_pmc(source):
+            source_type = 'Article'
+        if looks_like_pmc(target):
+            target_type = 'Article'
+
         # Consulta Cypher que usa MERGE para evitar duplicados de nodos y relaciones
         # Se crea una relación por cada documento fuente para preservar la trazabilidad
         # Add a pipeline-specific label (SL_PIPELINE) so we can safely wipe only nodes created by this pipeline
+        # Use ON CREATE / ON MATCH to avoid overwriting an existing type once set
         query = (
             "MERGE (s:Entity:SL_PIPELINE {name: $source_name}) "
+            "ON CREATE SET s.type = $source_type "
+            "ON MATCH SET s.type = coalesce(s.type, $source_type) "
             "MERGE (t:Entity:SL_PIPELINE {name: $target_name}) "
-            "MERGE (s)-[r:`" + canonical_relation + "` {source_doc: $doc}]->(t)"
+            "ON CREATE SET t.type = $target_type "
+            "ON MATCH SET t.type = coalesce(t.type, $target_type) "
+            "MERGE (s)-[r:`" + canonical_relation_upper + "` {source_doc: $doc}]->(t)"
         )
-        
+
         self.neo4j.execute_query(query, parameters={
-            "source_name": source, 
-            "target_name": target, 
-            "doc": source_doc
+            "source_name": source,
+            "target_name": target,
+            "doc": source_doc,
+            "source_type": source_type,
+            "target_type": target_type,
         })
 
 def load_relation_mapping(mapping_file: str) -> dict:
