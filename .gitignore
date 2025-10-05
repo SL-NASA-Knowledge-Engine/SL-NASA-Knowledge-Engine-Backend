@@ -85,3 +85,6 @@ __pypackages__/
 .vscode/settings.json
 .vscode/launch.json
 .vscode/tasks.json
+
+# Extra
+space_biology_scraped.json
