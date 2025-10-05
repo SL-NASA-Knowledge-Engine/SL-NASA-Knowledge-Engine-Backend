@@ -93,3 +93,21 @@ class KnowledgeGraphService:
         """
         
         return self.openai.generate_message(system_prompt, user_prompt)
+
+    def get_top_categories(self, limit: int = 10) -> list:
+        """
+        Obtiene las N entidades más frecuentes (con más relaciones) del grafo.
+        """
+        cypher_query = """
+        MATCH (n:Entity)
+        WITH n, COUNT { (n)--() } as degree
+        ORDER BY degree DESC
+        LIMIT $limit
+        RETURN n.name AS category, degree AS count
+        """
+        try:
+            results = self.neo4j.execute_query(cypher_query, parameters={'limit': limit})
+            return results
+        except Exception as e:
+            logging.error(f"Error al obtener las entidades de Neo4j: {e}")
+            return []
