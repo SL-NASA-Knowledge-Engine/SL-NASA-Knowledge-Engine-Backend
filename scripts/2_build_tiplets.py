@@ -22,23 +22,34 @@ def get_open_triplets_from_text(openai_service: OpenAIMessageService, text_chunk
         return []
 
     system_prompt = (
-    "Eres un experto en biociencias especializado en extracción de conocimiento estructurado "
-    "a partir de textos científicos. Tu tarea consiste en identificar las afirmaciones factuales "
-    "más relevantes expresadas como tripletas (entidad1, relación, entidad2)."
-)
+        "Eres un científico experto en biociencias y minería de conocimiento. "
+        "Tu especialidad es leer textos científicos y extraer conocimiento estructurado con terminología científica precisa. "
+        "Debes comportarte como un investigador que comprende biología, bioinformática, fisiología, microbiología, "
+        "astrobiología y comportamiento experimental. "
+        "Tu objetivo es identificar afirmaciones factuales significativas expresadas como tripletas (entidad1, relación, entidad2), "
+        "utilizando conceptos científicos exactos, nombres latinos, términos técnicos y lenguaje propio de artículos de investigación."
+    )
 
     user_prompt = f"""
     **Instrucciones:**
     1. Analiza el siguiente texto científico cuidadosamente.
-    2. Identifica las afirmaciones factuales y representa cada una como una tripleta.
-    3. Las claves deben ser:
+    2. Identifica las afirmaciones factuales más importantes y exprésalas como **tripletas**.
+    3. Cada tripleta debe representarse como un diccionario JSON con las claves:
     - **"source"**: la primera entidad (entidad1).
-    - **"relation"**: la relación o verbo que conecta las entidades.
+    - **"relation"**: la frase verbal corta que expresa la relación entre las entidades.
     - **"target"**: la segunda entidad (entidad2).
-    4. Tanto 'source' como 'target' deben ser conceptos científicos clave, tales como artículos, condiciones experimentales, resultados, autores, nombres de experimentos y hallazgos.
-    5. La 'relation' debe ser una frase verbal breve, clara y precisa que describa la conexión entre las entidades.
-    6. Devuelve el resultado como una **lista de diccionarios JSON** con las claves "source", "relation" y "target".
-    7. Sé conciso y extrae únicamente las relaciones más relevantes. Si no encuentras ninguna relación clara, devuelve una lista vacía `[]`.
+    4. Usa **terminología científica precisa**, tal como se emplea en biociencias: nombres latinos de organismos (p. ej. *Arabidopsis thaliana*), procesos biológicos (p. ej. *gene expression*, *microgravity adaptation*), condiciones experimentales (p. ej. *radiation exposure*, *low nutrient availability*), o conceptos de ingeniería espacial (p. ej. *life support system*, *hardware reliability*, *TRL level*).
+    5. Prioriza las afirmaciones factuales con relevancia científica o experimental. 
+    6. Sé conciso: extrae solo las relaciones más significativas o inferibles del texto.
+    7. Si no existe una relación clara, devuelve una lista vacía `[]`.
+    8. Devuelve el resultado en formato JSON válido (lista de diccionarios con "source", "relation" y "target").
+
+    **Contexto adicional:**
+    Basado en estudios reales sobre el comportamiento de búsqueda científica:
+    - Los investigadores usan nombres científicos exactos y combinan términos técnicos con condiciones ambientales (p. ej. “microgravity AND radiation AND *Arabidopsis photosynthesis*”).
+    - Prefieren vocabulario especializado que relacione entidades (genes, organismos, condiciones, resultados experimentales).
+    - Tienden a realizar búsquedas iterativas, refinando los términos para obtener precisión.
+    - Usan palabras clave como *response*, *expression*, *gene regulation*, *stress*, *adaptation*, *yield*, *morphology*, *nutritional content*, *risk mitigation*, *hardware*, *life support system*, *resource efficiency*, entre otros.
 
     **Texto a analizar:**
     ---
