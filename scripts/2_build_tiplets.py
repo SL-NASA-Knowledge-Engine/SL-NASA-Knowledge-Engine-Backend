@@ -58,7 +58,7 @@ def get_open_triplets_from_text(openai_service: OpenAIMessageService, text_chunk
 
     **Resultado esperado (formato JSON):**
     """
-
+    
     try:
         response_text = openai_service.generate_message(system_prompt, user_prompt)
         match = re.search(r'\[.*\]', response_text, re.DOTALL)

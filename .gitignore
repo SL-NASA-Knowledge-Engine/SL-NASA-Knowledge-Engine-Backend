@@ -86,5 +86,8 @@ __pypackages__/
 .vscode/launch.json
 .vscode/tasks.json
 
+__pycache__
+*.pyc
+
 # Extra
 space_biology_scraped.json
