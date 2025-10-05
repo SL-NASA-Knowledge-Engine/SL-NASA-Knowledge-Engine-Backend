@@ -85,3 +85,5 @@ __pypackages__/
 .vscode/settings.json
 .vscode/launch.json
 .vscode/tasks.json
+
+__pycache__
