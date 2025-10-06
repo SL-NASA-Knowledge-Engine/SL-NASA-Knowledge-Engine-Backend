@@ -1,78 +1,150 @@
-# SL-NASA-Knowledge-Engine-Backend
+# SL-NASA-KNOWLEDGE-ENGINE
 
-Breve guía para desarrollar y ejecutar el backend localmente.
+The SL-NASA-KNOWLEDGE-ENGINE Backend powers the AI core of LABI — an experimental Retrieval-Augmented Generation (RAG) search engine built to help researchers explore 608 NASA bioscience publications through natural language.
+This repository hosts the FastAPI services, ingestion pipelines, and database connectors that transform unstructured literature into a structured knowledge graph and semantic vector indexes, enabling traceable, evidence-based responses without hallucinations.
 
-## Requisitos
-- Python 3.11+ (asegúrate de usar la misma versión en el entorno)
-- Git (opcional)
+## Demo & Project links
 
-## Preparar un entorno virtual (Windows, PowerShell)
-1. Abrir PowerShell en la carpeta del proyecto:
+- Project demo (presentation): [Canva presentation](https://www.canva.com/design/DAG07k4RDdo/hFb0Pd2zLiUTt9w2yzaWbw/edit?utm_content=DAG07k4RDdo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+- Project organization: [SL-NASA-Knowledge-Engine GitHub org](https://github.com/SL-NASA-Knowledge-Engine)
+- Frontend repository: [SL-NASA-Knowledge-Engine-Frontend](https://github.com/SL-NASA-Knowledge-Engine/sl-nasa-knowledge-engine-frontend)
+
+## What is LABI Search Engine?
+
+LABI (Literature Analysis and Bioscience Intelligence) is a domain-specific AI assistant and knowledge engine for space bioscience research.
+It allows researchers to ask natural-language questions and receive grounded, citation-supported answers derived solely from the NASA bioscience corpus.
+
+The backend is responsible for:
+
+- Structuring 608 NASA publications into a Neo4j knowledge graph (entities and relationships).
+- Building semantic vector indexes for retrieval-based contextual search.
+- Generating RAG-based responses grounded in the retrieved passages.
+- Serving API endpoints consumed by the frontend chat interface.
+
+Together, these components enable literature synthesis, comparison of experimental results, and discovery of hidden biological patterns — all in minutes instead of weeks.
+
+## High-level architecture
+
+- Backend (this repo): FastAPI application exposing REST endpoints for RAG queries and data management.
+
+### Data layer
+
+- Neo4j — stores entities, metadata, and relationships.
+- Vector database — stores semantic embeddings of corpus passages.
+
+### Pipeline
+
+- Article ingestion and scraping.
+- LLM-assisted triplet extraction and relation mapping.
+- Neo4j population and indexing.
+- Query-time retrieval + synthesis via LLM.
+
+## Key backend features
+
+- `main.py` — FastAPI entry point with automatic OpenAPI documentation (`/docs`).
+- `api/router.py` — central routing file defining API endpoints.
+- `KnowledgeGraphService` — orchestrates semantic retrieval and evidence-grounded synthesis.
+- `Neo4jService` — manages Cypher queries and safe session handling.
+- `OpenAIMessageService` — wraps LLM requests (Azure OpenAI compatible).
+- `scripts/*.py` — end-to-end ingestion pipeline: scraping, triplet extraction, mapping, and database population.
+
+## Running the backend locally
+
+### Requirements
+
+- Python 3.11+
+- Neo4j (local or remote)
+- API key for your LLM provider (e.g., Azure OpenAI)
+- Optional: Docker for local Neo4j instance
+
+### Quick start (Windows PowerShell)
 
 ```powershell
-Set-Location C:\Users\user\Desktop\SL-NASA-Knowledge-Engine-Backend
-```
+# Clone and enter the repo
+git clone https://github.com/SL-NASA-Knowledge-Engine/SL-NASA-Knowledge-Engine-Backend
+Set-Location SL-NASA-Knowledge-Engine-Backend
 
-2. Crear el virtualenv y activarlo:
-
-```powershell
+# Create and activate a virtual environment
 python -m venv .venv
-# Si PowerShell bloquea la ejecución del script, permite temporalmente la ejecución en esta sesión:
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
 .\.venv\Scripts\Activate.ps1
-```
 
-Cuando el entorno está activado verás el prefijo `(.venv)` en el prompt.
-
-## Instalar dependencias
-Con el venv activado ejecuta:
-
-```powershell
+# Install dependencies
 python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
-```
+pip install -r requirements.txt
 
-## Configurar variables de entorno
-El proyecto usa `.env` para configuración (se incluye `.env.example`). Crea tu `.env` local copiando el ejemplo y completando valores sensibles:
-
-```powershell
+# Copy environment example
 Copy-Item .env.example .env
-notepad .env    # o 'code .env' si usas VS Code
-```
+notepad .env  # edit credentials and endpoints
 
-Variables importantes (ejemplo):
-
-```
-NEO4J_URI=neo4j+s://<your-host>
-NEO4J_USER=<username>
-NEO4J_PASSWORD=<password>
-OPENAI_API_KEY=...
-```
-
-> Nota: el servicio está diseñado para que la aplicación NO arranque si no puede conectar con Neo4j (startup fallará). Asegúrate de que las variables de Neo4j son correctas antes de ejecutar.
-
-## Ejecutar la aplicación (desarrollo)
-Con el venv activado y `.env` configurado, ejecuta:
-
-```powershell
+# Start the FastAPI server
 uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
-Abrir en el navegador: http://127.0.0.1:8000/
+Once running:
 
-API docs (Swagger): http://127.0.0.1:8000/docs
+- Base URL: http://127.0.0.1:8000/
+- Interactive docs: http://127.0.0.1:8000/docs
 
-## Endpoints de ejemplo
-- `GET /api/v1/hello` — endpoint simple de prueba (devuelve "Hello World").
-- `GET /api/v1/neo4j/nodes?limit=10` — ejemplo para ejecutar una query en Neo4j (si está implementado en router).
+## Data
 
-## Troubleshooting rápido
-- Si ves `ModuleNotFoundError: No module named 'neo4j'`: instala con `python -m pip install neo4j` dentro del venv.
-- Si el servidor falla en startup por errores de Neo4j: revisa `.env` y la conectividad de red al host Neo4j. Los errores de inicio se registran en la salida de Uvicorn.
-- Si PowerShell bloquea la activación del venv: usa `Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned -Force` antes de activar.
+The backend processes and structures 608 NASA bioscience publications.
+Generated artifacts are stored in the `resources/` directory:
 
-## Buenas prácticas
-- No subas tu `.env` al repositorio. `.gitignore` ya lo excluye.
-- Congela versiones para reproducibilidad: `python -m pip freeze > requirements-locked.txt`.
+- `space_biology_scraped.json` — raw article content.
+- `raw_triplets.json` — LLM-extracted subject–predicate–object triplets.
+- `relation_map.json` — normalized relationship mappings.
+- `top_relations.txt` — most frequent relation terms.
 
-Si quieres, puedo añadir ejemplos de queries y un `scripts/test_neo4j.py` que pruebe la conectividad (sin exponer credenciales). Dime si lo añado.
+## Ingestion pipeline overview
+
+- Scraping: `scripts/1_scraper.py` collects and cleans publication data.
+- Triplet extraction: `scripts/2_build_triplets.py` identifies entity–relation–entity structures.
+- Relation mapping: `scripts/3_create_mapping.py` standardizes relation labels.
+- Graph population: `scripts/4_populate_neo4j.py` inserts nodes and edges into Neo4j.
+
+Each step can be run independently and logs progress to `logs/` for reproducibility.
+
+## API endpoints (examples)
+
+| Endpoint | Method | Description |
+|---|---:|---|
+| /api/v1/hello | GET | Health/test endpoint |
+| /api/v1/query | POST | Main RAG query — returns an answer and supporting citations |
+| /api/v1/categories/top/{limit} | GET | Retrieve top categories by publication count |
+
+## Development notes
+
+- Configuration files: core/settings.py and core/logging_config.py.
+- Ingestion scripts may call LLM APIs — monitor token usage and rate limits.
+- Run pytest to execute unit tests (if available).
+- Before committing, ensure .env and generated data files are excluded via .gitignore.
+
+## Security and attribution
+
+LABI is explicitly grounded in the NASA corpus to eliminate hallucinations and ensure scientific integrity.
+Each generated answer includes source citations and evidence passages.
+When deploying, use environment variables or secret managers to protect credentials.
+Never commit `.env` or API keys to version control.
+
+## Contributing
+
+We welcome contributions! Areas of interest include:
+
+- Enhancing triplet extraction and normalization logic.
+- Adding streaming responses and improved error handling.
+- Expanding the Neo4j schema with richer metadata.
+- Strengthening test coverage for the RAG query pipeline.
+
+Please open issues or pull requests at: [SL-NASA-Knowledge-Engine GitHub org](https://github.com/SL-NASA-Knowledge-Engine)
+
+## Credits
+
+This backend was developed using a combination of AI tools and human expertise:
+
+- NotebookLM and Perplexity — literature analysis and theme extraction.
+- GitHub Copilot — backend code suggestions and API implementation.
+- Claude and ChatGPT — design and documentation prototyping.
+
+Together, they supported the creation of LABI, a system that transforms NASA’s fragmented bioscience literature into a coherent, queryable intelligence engine for the future of space exploration.
+
